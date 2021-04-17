@@ -10,7 +10,9 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
 
-public class MainActivity extends AppCompatActivity implements SensorEventListener {
+import views.CustomView;
+
+public class MainActivity extends AppCompatActivity{
 
     private static final String TAG = "MainActivity";
     private SensorManager sensorManager;
@@ -21,21 +23,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Log.d(TAG, "onCreate: Initializing Sensor Services");
-        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        accelerometro = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        sensorManager.registerListener(MainActivity.this, accelerometro, sensorManager.SENSOR_DELAY_NORMAL);
-        Log.d(TAG, "onCreate: Registered Accelerometer Listener");
-    }
+        CustomView customView = new CustomView(this);
 
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
     }
 
-    @Override
-    public void onSensorChanged(SensorEvent event) {
-        Log.d(TAG, "onSensorChanged: X: " + event.values[0] + "Y: " + event.values[1] + "Z: " + event.values[2]);
 
-    }
 }
