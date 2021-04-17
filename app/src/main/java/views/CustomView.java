@@ -15,6 +15,9 @@ import androidx.annotation.RequiresApi;
 public class CustomView extends View {
 
     private static final int SQUARE_SIZE = 100;
+    private Rect createRett;
+    private Paint paintRett;
+
 
     public CustomView(Context context) {
         super(context);
@@ -39,23 +42,20 @@ public class CustomView extends View {
     }
 
     private void init(@Nullable AttributeSet set){
+        createRett = new Rect();
+        paintRett = new Paint(Paint.ANTI_ALIAS_FLAG);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
 
-        Rect rect = new Rect();
-        rect.left=100;
-        rect.right = 100;
-        rect.top = rect.left + SQUARE_SIZE;
-        rect.bottom = rect.right + SQUARE_SIZE;
+        createRett.left=100;
+        createRett.right = 100;
+        createRett.top = createRett.left + SQUARE_SIZE;
+        createRett.bottom = createRett.right + SQUARE_SIZE;
 
-        rect.height();
-        rect.width();
+        paintRett.setColor(Color.RED);
 
-        Paint paint = new Paint();
-        paint.setColor(Color.RED);
-
-        canvas.drawRect(rect, paint);
+        canvas.drawRect(createRett, paintRett);
     }
 }
