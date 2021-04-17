@@ -9,24 +9,26 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import views.CustomView;
 
 public class MainActivity extends AppCompatActivity{
 
-    private static final String TAG = "MainActivity";
-    private SensorManager sensorManager;
-    Sensor accelerometro;
+    private CustomView mCustomView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        CustomView customView = new CustomView(this);
-
-
+        mCustomView = (CustomView) findViewById(R.id.customView);
+        findViewById(R.id.bottone).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mCustomView.swapColor();
+            }
+        });
     }
-
 
 }
